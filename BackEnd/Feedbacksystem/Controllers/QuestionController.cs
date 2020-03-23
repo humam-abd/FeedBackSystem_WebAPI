@@ -14,17 +14,15 @@ namespace Feedbacksystem.Controllers
 
         public HttpResponseMessage Get()
         {
+            var data = (from qst in db.Question_tbl select qst.Question).ToList(); 
+            return Request.CreateResponse(HttpStatusCode.OK,data);
+        }
 
-            var data = (from qst in db.Question_tbl join
-                        feed in db.Feedback_tbl on
-                        qst.Id equals feed.QuestionID
-                        select new FeedReport
-                        {
-                            Question = qst.Question,
-                            FeedBack = feed.FeedBack,
-                            UserID = feed.UserID
-                        }).ToList();
-            return Request.CreateResponse(HttpStatusCode.OK, data);
+        public HttpResponseMessage Post(Question_tbl quest)
+        {
+            var data = db.Question_tbl.Add(quest);
+            db.SaveChanges();
+            return Request.CreateResponse(HttpStatusCode.OK);
         }
     }
 }

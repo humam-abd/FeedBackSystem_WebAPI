@@ -5,11 +5,13 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Text.RegularExpressions;
+using Feedbacksystem.Models;
 
 namespace Feedbacksystem.Controllers
 {
     public class UserController : ApiController
     {
+        FeedBackSystemEntities db = new FeedBackSystemEntities();
         public HttpResponseMessage Post(Int64 userID)
         {
             var input = userID.ToString();
@@ -24,9 +26,11 @@ namespace Feedbacksystem.Controllers
             }
         }
 
-        public HttpResponseMessage Post(string adminID, string adminpass)
+        public HttpResponseMessage Get(string adminID, string adminpass)
         {
-            return Request.CreateResponse(HttpStatusCode.OK);
+            var data = (from admin in db.Admin_tbl
+                       select db.Admin_tbl).ToList();
+            return Request.CreateResponse(HttpStatusCode.OK, data);
         }
     }
 }

@@ -12,12 +12,23 @@ namespace Feedbacksystem.Controllers
     {
         FeedBackSystemEntities db = new FeedBackSystemEntities();
 
+        //FeedBack Report
         public HttpResponseMessage Get()
         {
-            var data = db.Feedback_tbl.ToList();
+
+            var data = (from qst in db.Question_tbl join
+                        feed in db.Feedback_tbl on
+                        qst.Id equals feed.QuestionID
+                        select new FeedReport
+                        {
+                            Question = qst.Question,
+                            FeedBack = feed.FeedBack,
+                            UserID = feed.UserID
+                        }).ToList();
             return Request.CreateResponse(HttpStatusCode.OK, data);
         }
-        
+
+        //Post FeedBack
         public HttpResponseMessage Post(Feedback_tbl feeds)
         {
             var data = db.Feedback_tbl.Add(feeds);
