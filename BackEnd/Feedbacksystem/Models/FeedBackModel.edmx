@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="FeedBackSystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="FeedBackSystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Admin_tbl">
           <Key>
             <PropertyRef Name="Id" />
@@ -34,31 +34,11 @@
           <EntitySet Name="Feedback_tbl" EntityType="Self.Feedback_tbl" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Question_tbl" EntityType="Self.Question_tbl" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="FeedBackSystemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Feedback_tbl">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="FeedBack" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="QuestionID" Type="Int32" />
-          <Property Name="UserID" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
-        </EntityType>
-        <EntityType Name="Question_tbl">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Question" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityContainer Name="FeedBackSystemEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Feedback_tbl" EntityType="Self.Feedback_tbl" />
-          <EntitySet Name="Question_tbl" EntityType="Self.Question_tbl" />
-          <EntitySet Name="Admin_tbl" EntityType="FeedBackSystemModel.Admin_tbl" />
-        </EntityContainer>
         <EntityType Name="Admin_tbl">
           <Key>
             <PropertyRef Name="Id" />
@@ -67,12 +47,42 @@
           <Property Name="AdminName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="Feedback_tbl">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FeedBack" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="QuestionID" Type="Int32" />
+          <Property Name="UserID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Question_tbl">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Question" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="FeedBackSystemEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Admin_tbl" EntityType="Self.Admin_tbl" />
+          <EntitySet Name="Feedback_tbl" EntityType="Self.Feedback_tbl" />
+          <EntitySet Name="Question_tbl" EntityType="Self.Question_tbl" />
+        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="FeedBackSystemModelStoreContainer" CdmEntityContainer="FeedBackSystemEntities">
+        <EntityContainerMapping StorageEntityContainer="FeedBackSystemModelStoreContainer" CdmEntityContainer="FeedBackSystemEntities2">
+          <EntitySetMapping Name="Admin_tbl">
+            <EntityTypeMapping TypeName="FeedBackSystemModel.Admin_tbl">
+              <MappingFragment StoreEntitySet="Admin_tbl">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AdminName" ColumnName="AdminName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Feedback_tbl">
             <EntityTypeMapping TypeName="FeedBackSystemModel.Feedback_tbl">
               <MappingFragment StoreEntitySet="Feedback_tbl">
@@ -88,15 +98,6 @@
               <MappingFragment StoreEntitySet="Question_tbl">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Question" ColumnName="Question" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Admin_tbl">
-            <EntityTypeMapping TypeName="FeedBackSystemModel.Admin_tbl">
-              <MappingFragment StoreEntitySet="Admin_tbl">
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="AdminName" ColumnName="AdminName" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

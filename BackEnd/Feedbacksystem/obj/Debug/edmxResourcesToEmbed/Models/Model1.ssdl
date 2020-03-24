@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FeedBackSystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Admin_tbl">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AdminName" Type="varchar" MaxLength="20" />
+    <Property Name="Password" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Feedback_tbl">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FeedBack" Type="varchar" MaxLength="100" />
+    <Property Name="QuestionID" Type="int" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Question_tbl">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Question" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityContainer Name="FeedBackSystemModelStoreContainer">
+    <EntitySet Name="Admin_tbl" EntityType="Self.Admin_tbl" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Feedback_tbl" EntityType="Self.Feedback_tbl" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Question_tbl" EntityType="Self.Question_tbl" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

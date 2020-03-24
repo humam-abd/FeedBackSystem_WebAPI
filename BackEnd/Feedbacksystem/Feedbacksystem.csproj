@@ -170,6 +170,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AdminLog.cs" />
     <Compile Include="Models\Admin_tbl.cs">
       <DependentUpon>FeedBackModel.tt</DependentUpon>
     </Compile>
@@ -208,8 +209,8 @@
     <Content Include="Global.asax" />
     <Content Include="Models\FeedBackModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>FeedBackModel.Context.cs</LastGenOutput>
       <DependentUpon>FeedBackModel.edmx</DependentUpon>
+      <LastGenOutput>FeedBackModel.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Models\FeedBackModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

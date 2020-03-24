@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="FeedBackSystemModelStoreContainer" CdmEntityContainer="FeedBackSystemEntities2">
+  <EntityContainerMapping StorageEntityContainer="FeedBackSystemModelStoreContainer" CdmEntityContainer="FeedBackSystemEntities1">
     <EntitySetMapping Name="Admin_tbl">
       <EntityTypeMapping TypeName="FeedBackSystemModel.Admin_tbl">
         <MappingFragment StoreEntitySet="Admin_tbl">

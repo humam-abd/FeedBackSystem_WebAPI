@@ -10,7 +10,7 @@ namespace Feedbacksystem.Controllers
 {
     public class FeedBackController : ApiController
     {
-        FeedBackSystemEntities db = new FeedBackSystemEntities();
+        FeedBackSystemEntities2 db = new FeedBackSystemEntities2();
 
         //FeedBack Report
         public HttpResponseMessage Get()

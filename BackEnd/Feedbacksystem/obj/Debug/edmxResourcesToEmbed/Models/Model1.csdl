@@ -24,7 +24,7 @@
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Question" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
   </EntityType>
-  <EntityContainer Name="FeedBackSystemEntities2" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="FeedBackSystemEntities1" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Admin_tbl" EntityType="Self.Admin_tbl" />
     <EntitySet Name="Feedback_tbl" EntityType="Self.Feedback_tbl" />
     <EntitySet Name="Question_tbl" EntityType="Self.Question_tbl" />

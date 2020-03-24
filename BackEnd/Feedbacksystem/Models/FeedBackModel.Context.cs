@@ -13,10 +13,10 @@ namespace Feedbacksystem.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class FeedBackSystemEntities : DbContext
+    public partial class FeedBackSystemEntities2 : DbContext
     {
-        public FeedBackSystemEntities()
-            : base("name=FeedBackSystemEntities")
+        public FeedBackSystemEntities2()
+            : base("name=FeedBackSystemEntities2")
         {
         }
     
@@ -25,8 +25,8 @@ namespace Feedbacksystem.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Admin_tbl> Admin_tbl { get; set; }
         public virtual DbSet<Feedback_tbl> Feedback_tbl { get; set; }
         public virtual DbSet<Question_tbl> Question_tbl { get; set; }
-        public virtual DbSet<Admin_tbl> Admin_tbl { get; set; }
     }
 }

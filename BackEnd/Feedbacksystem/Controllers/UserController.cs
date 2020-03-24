@@ -11,7 +11,7 @@ namespace Feedbacksystem.Controllers
 {
     public class UserController : ApiController
     {
-        FeedBackSystemEntities db = new FeedBackSystemEntities();
+        FeedBackSystemEntities2 db = new FeedBackSystemEntities2();
         public HttpResponseMessage Post(Int64 userID)
         {
             var input = userID.ToString();
@@ -28,8 +28,14 @@ namespace Feedbacksystem.Controllers
 
         public HttpResponseMessage Get(string adminID, string adminpass)
         {
-            var data = (from admin in db.Admin_tbl
-                       select db.Admin_tbl).ToList();
+
+            var data = (from adm in db.Admin_tbl
+                       where adminID == adm.AdminName && adminpass == adm.Password
+                       select new AdminLog {
+                           Id = adm.Id,
+                           Admin = adm.AdminName,
+                           Password = adm.Password
+                       }).ToList();
             return Request.CreateResponse(HttpStatusCode.OK, data);
         }
     }

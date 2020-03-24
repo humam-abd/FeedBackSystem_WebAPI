@@ -10,6 +10,5 @@ namespace Feedbacksystem.Models
         public string Question { get; set; }
         public string FeedBack { get; set; }
         public string UserID { get; set; }
-
     }
 }
